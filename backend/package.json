@@ -1,13 +1,20 @@
 {
-  "name": "backend",
+  "name": "auth-user-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Authentication backend with Node.js, Express, MongoDB",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "node",
+    "express",
+    "mongodb",
+    "authentication",
+    "jwt"
+  ],
+  "author": "Soumyadeep Banik Chowdhury",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^6.0.0",
@@ -20,8 +27,12 @@
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.0.2",
     "multer": "^2.0.2",
-    "nodemailer": "^7.0.12",
-    "nodemon": "^3.1.11",
-    "package-lock": "^1.0.5"
+    "nodemailer": "^7.0.12"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
