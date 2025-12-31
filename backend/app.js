@@ -9,15 +9,12 @@ const app = express();
 app.use(
   cors({
     origin: "*",
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    methods: ["GET", "PUT", "POST", "DELETE", "PATCH"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-app.options("*", cors());
-
-// body parsers
+// ❗ Do NOT use bodyParser separately
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -30,7 +27,19 @@ app.get("/api/v1/", authMiddleware, (req, res) => {
   });
 });
 
+app.get("/test-mail", async (req, res) => {
+  try {
+    await sendMail(
+      "your_email@gmail.com",
+      "Test email",
+      "<b>Email working!</b>"
+    );
+    res.send("Email sent");
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
+
 app.use("/api/v1", userRouter);
 
 module.exports = app;
-
